@@ -32,5 +32,14 @@ namespace BusinessLayer.Services
             return patientRepository.GetPatientById(patientId);
         }
 
+        public bool UpdatePatient(Patient patient)
+        {
+            return patientRepository.UpdatePatient(patient);
+        }
+
+        public bool DeletePatient(int patientId)
+        {
+            return patientRepository.DeletePatient(patientId);
+        }
     }
 }

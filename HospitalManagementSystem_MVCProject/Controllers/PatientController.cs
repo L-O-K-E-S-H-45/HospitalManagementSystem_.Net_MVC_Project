@@ -49,5 +49,45 @@ namespace HospitalManagementSystem_MVCProject.Controllers
             return View(patient);
         }
 
+        [HttpGet]
+        public IActionResult UpdatePatient(int id)
+        {
+            if (id == null || id == 0)
+                return NotFound("Patient id may be null or zero, id: " + id);
+            Patient patient = patientBusiness.GetPatientById(id);
+            if (patient == null)
+                return NotFound("Patient not found for id: " + id);
+            return View(patient);
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePatient(int id, Patient patient)
+        {
+            if (id != patient.PatientId)
+                return NotFound("Missmatch id");
+            bool result = patientBusiness.UpdatePatient(patient);
+            if (!result) return NotFound("Failed to update patient");
+            else return RedirectToAction("GetAllPatients"); 
+        }
+
+        [HttpGet]
+        public IActionResult DeletePatient(int id)
+        {
+            if (id == null || id == 0)
+                return NotFound("Patient id may be null or zero, id: " + id);
+            Patient patient = patientBusiness.GetPatientById(id);
+            if (patient == null)
+                return NotFound("Patient not found for id: " + id);
+            return View(patient);
+        }
+
+        [HttpPost, ActionName("DeletePatient")]
+        public IActionResult ConfirmDeletePatient(int id)
+        {
+            bool result = patientBusiness.DeletePatient(id);
+            if (!result) return NotFound("Failed to delete patient");
+            else return RedirectToAction("GetAllPatients");
+        }
+
     }
 }

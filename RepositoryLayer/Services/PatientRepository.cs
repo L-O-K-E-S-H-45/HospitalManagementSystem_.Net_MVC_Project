@@ -64,21 +64,24 @@ namespace RepositoryLayer.Services
                     SqlDataReader dataReader = sqlCommand.ExecuteReader();
                     while (dataReader.Read())
                     {
-                        Patient patient = new Patient()
+                        if (!(bool)dataReader["IsTrash"])
                         {
-                            PatientId = (int)dataReader["PatientId"],
-                            FullName = (string)dataReader["FullName"],
-                            Email = (string)dataReader["Email"],
-                            Contact = (long)dataReader["Contact"],
-                            DOB = (DateTime)dataReader["DOB"],
-                            Age = (int)dataReader["Age"],
-                            Gender = (string)dataReader["Gender"],
-                            PatientImage = (string)dataReader["PatientImage"],
-                            IsTrash = (bool)dataReader["IsTrash"],
-                            CreatedAt = (DateTime)dataReader["CreatedAt"],
-                            UpdatedAt = (DateTime)dataReader["UpdatedAt"]
-                        };
-                        patients.Add(patient);
+                            Patient patient = new Patient()
+                            {
+                                PatientId = (int)dataReader["PatientId"],
+                                FullName = (string)dataReader["FullName"],
+                                Email = (string)dataReader["Email"],
+                                Contact = (long)dataReader["Contact"],
+                                DOB = (DateTime)dataReader["DOB"],
+                                Age = (int)dataReader["Age"],
+                                Gender = (string)dataReader["Gender"],
+                                PatientImage = (string)dataReader["PatientImage"],
+                                IsTrash = (bool)dataReader["IsTrash"],
+                                CreatedAt = (DateTime)dataReader["CreatedAt"],
+                                UpdatedAt = (DateTime)dataReader["UpdatedAt"]
+                            };
+                            patients.Add(patient);
+                        }
                     }
                     return patients;
                 }
@@ -134,12 +137,54 @@ namespace RepositoryLayer.Services
 
         public bool UpdatePatient(Patient patient)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (sqlConnection != null)
+                {
+                    SqlCommand sqlCommand = new SqlCommand("usp_UpdatePatient", sqlConnection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@PatientId", patient.PatientId);
+                    sqlCommand.Parameters.AddWithValue("@FullName", patient.FullName);
+                    sqlCommand.Parameters.AddWithValue("@Email", patient.Email);
+                    sqlCommand.Parameters.AddWithValue("@Contact", patient.Contact);
+                    sqlCommand.Parameters.AddWithValue("@DOB", patient.DOB);
+                    sqlCommand.Parameters.AddWithValue("@Gender", patient.Gender);
+                    sqlCommand.Parameters.AddWithValue("@PatientImage", patient.PatientImage);
+
+                    sqlConnection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    return true;
+                }
+                else throw new Exception("Sql Connection not established");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { sqlConnection.Close(); }
         }
 
         public bool DeletePatient(int patientId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (sqlConnection != null)
+                {
+                    SqlCommand sqlCommand = new SqlCommand("usp_DeletePatient", sqlConnection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@PatientId", patientId);
+
+                    sqlConnection.Open();
+                    sqlCommand.ExecuteReader();
+                    return true;
+                }
+                else throw new Exception("Sql Connection not established");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { sqlConnection.Close(); }
         }
     }
 }

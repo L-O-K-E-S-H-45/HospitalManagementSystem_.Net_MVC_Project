@@ -88,9 +88,9 @@
                 @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Edit", "UpdatePatient", new {  id=item.PatientId }) |
                     @Html.ActionLink("Details", "GetPatientById", new { patientId = item.PatientId }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Delete", "DeletePatient", new {  id=item.PatientId })
             </td>
         </tr>
 }
