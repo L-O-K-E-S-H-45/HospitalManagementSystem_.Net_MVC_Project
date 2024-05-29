@@ -100,7 +100,7 @@
      @* <a asp-action="Details" asp-route-id="@Model.DoctorId">Edit</a> |
     <a asp-action="GetAllDoctors">Back to List</a> *@
      @* ----- OR ----- Both works *@
-    @Html.ActionLink("Details", "GetDoctorById", new { id = Model.DoctorId }) |
+    @Html.ActionLink("Details", "GetDoctorById", new { patientId = Model.DoctorId }) |
     <a asp-action="GetAllDoctors">Back to list</a>
 
     @*  @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

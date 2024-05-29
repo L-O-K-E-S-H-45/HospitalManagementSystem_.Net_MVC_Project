@@ -41,5 +41,10 @@ namespace BusinessLayer.Services
         {
             return patientRepository.DeletePatient(patientId);
         }
+
+        public Patient PatientLogin(LoginModel loginModel)
+        {
+            return patientRepository.PatientLogin(loginModel);
+        }
     }
 }

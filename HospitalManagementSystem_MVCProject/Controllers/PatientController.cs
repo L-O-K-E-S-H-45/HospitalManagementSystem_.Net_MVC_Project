@@ -71,23 +71,40 @@ namespace HospitalManagementSystem_MVCProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeletePatient(int id)
+        public IActionResult DeletePatient(int patientId)
         {
-            if (id == null || id == 0)
-                return NotFound("Patient id may be null or zero, id: " + id);
-            Patient patient = patientBusiness.GetPatientById(id);
+            if (patientId == null || patientId == 0)
+                return NotFound("Patient id may be null or zero, id: " + patientId);
+            Patient patient = patientBusiness.GetPatientById(patientId);
             if (patient == null)
-                return NotFound("Patient not found for id: " + id);
+                return NotFound("Patient not found for id: " + patientId);
             return View(patient);
         }
 
         [HttpPost, ActionName("DeletePatient")]
-        public IActionResult ConfirmDeletePatient(int id)
+        public IActionResult ConfirmDeletePatient(int patientId)
         {
-            bool result = patientBusiness.DeletePatient(id);
+            bool result = patientBusiness.DeletePatient(patientId);
             if (!result) return NotFound("Failed to delete patient");
             else return RedirectToAction("GetAllPatients");
         }
+
+        [HttpGet]
+        public IActionResult PatientLogin()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult PatientLogin(LoginModel loginModel)
+        {
+            if (loginModel == null || loginModel.UserId == 0 || loginModel.UserName == null)
+                return NotFound("Please provide all credentials");
+            Patient patient = patientBusiness.PatientLogin(loginModel);
+            if (patient == null) return NotFound("Invalid credentials");
+            return RedirectToAction("GetPatientById", new { patientId = patient.PatientId });
+        } 
 
     }
 }

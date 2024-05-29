@@ -67,7 +67,8 @@
                 @Html.DisplayFor(modelItem => item.Contact)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DOB)
+                @* @Html.DisplayFor(modelItem => item.DOB) *@
+                @item.DOB.ToString("d")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Age)
@@ -90,7 +91,7 @@
             <td>
                     @Html.ActionLink("Edit", "UpdatePatient", new {  id=item.PatientId }) |
                     @Html.ActionLink("Details", "GetPatientById", new { patientId = item.PatientId }) |
-                    @Html.ActionLink("Delete", "DeletePatient", new {  id=item.PatientId })
+                    @Html.ActionLink("Delete", "DeletePatient", new {  patientId=item.PatientId })
             </td>
         </tr>
 }

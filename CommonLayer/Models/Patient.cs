@@ -14,7 +14,8 @@ namespace CommonLayer.Models
         public long Contact {  get; set; }
         public DateTime DOB { get; set; }
         public int Age { get; set; }
-        public required string Gender { get; set; }
+        //public required string Gender { get; set; }
+        public string Gender { get; set; }
         public string? PatientImage { get; set; }
         public bool IsTrash { get; set; }
         public DateTime CreatedAt { get; set; }

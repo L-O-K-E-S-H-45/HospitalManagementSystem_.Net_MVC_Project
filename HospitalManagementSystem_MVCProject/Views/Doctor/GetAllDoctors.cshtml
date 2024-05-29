@@ -103,9 +103,9 @@
                 @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "UpdateDoctor", new {   id=item.DoctorId  }) |
+                    @Html.ActionLink("Edit", "UpdateDoctor", new {   patientId=item.DoctorId  }) |
                     @Html.ActionLink("Details", "GetDoctorById", new { doctorId = item.DoctorId }) |
-                    @Html.ActionLink("Delete", "DeleteDoctor", new { id = item.DoctorId })
+                    @Html.ActionLink("Delete", "DeleteDoctor", new { patientId = item.DoctorId })
             </td>
         </tr>
 }
