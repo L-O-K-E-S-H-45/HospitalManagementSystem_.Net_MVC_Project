@@ -4,105 +4,123 @@
     ViewData["Title"] = "GetDoctorById";
 }
 
-<h1>GetDoctorById</h1>
+<link rel="stylesheet" href="~/css/UserDetailsStyleSheet.css" asp-append-version="true" />
 
-<div>
-    <h4>Doctor</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+<h1 id="dts-title">Doctor details</h1>
+
+<hr id="hr" />
+
+<div id="user-dtls">
+    @* <h4>Doctor</h4> *@
+    @* <hr /> *@
+    <dl class="row" id="container">
+        <dt class = "col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.DoctorId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.DoctorId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.FullName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.FullName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.Contact)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.Contact)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.DOB)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DOB)
+        <dd class="col-sm-10" id="dct-data">
+            @* @Html.DisplayFor(model => model.DOB) *@
+            @Model.DOB.ToString("d")
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.Age)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
+        <dd class="col-sm-10" id="dct-data">
+            @* @Html.DisplayFor(model => model.Age) *@
+            @Model.Age
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.Gender)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.Gender)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.Qualification)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.Qualification)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.Specialization)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.Specialization)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.Experience)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.Experience)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.DoctorImage)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.DoctorImage)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.IsTrash)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.IsTrash)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.CreatedAt)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.CreatedAt)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="dct-label">
             @Html.DisplayNameFor(model => model.UpdatedAt)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="dct-data">
             @Html.DisplayFor(model => model.UpdatedAt)
         </dd>
+
+        <div id="rdct-btns">
+            @* <a asp-action="Details" asp-route-id="@Model.DoctorId">Edit</a> |
+            <a asp-action="GetAllDoctors">Back to List</a> *@
+            @* ----- OR ----- Both works *@
+            @if (Context.Session.GetInt32("DoctorId") >= 0 && Context.Session.GetInt32("PatientId") == 0)
+            {
+                <div id="btns">@Html.ActionLink("Update", "UpdateDoctor", new { id = Model.DoctorId })</div>
+            }
+
+            ||  <a id="btns" asp-action="GetAllDoctors">Back to list</a>  ||
+
+            @if (Context.Session.GetInt32("PatientId") > 0)
+            {
+                <a id="btns" asp-controller="Appointment" asp-action="BookAppointment">Book Appointment</a>
+            }
+
+            @*  @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            <a asp-action="GetAllDoctors">Back to List</a>  *@
+        </div>
+
     </dl>
 </div>
-<div>
-     @* <a asp-action="Details" asp-route-id="@Model.DoctorId">Edit</a> |
-    <a asp-action="GetAllDoctors">Back to List</a> *@
-     @* ----- OR ----- Both works *@
-    @Html.ActionLink("Details", "GetDoctorById", new { patientId = Model.DoctorId }) |
-    <a asp-action="GetAllDoctors">Back to list</a>
 
-    @*  @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="GetAllDoctors">Back to List</a>  *@
-</div>

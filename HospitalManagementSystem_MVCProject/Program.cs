@@ -2,7 +2,6 @@ using BusinessLayer.Interfaces;
 using BusinessLayer.Services;
 using RepositoryLayer.Interfaces;
 using RepositoryLayer.Services;
-using RepositoryLayer.SqlConnectionObject;
 
 internal class Program
 {
@@ -32,6 +31,15 @@ internal class Program
         builder.Services.AddTransient<IPatientRepository, PatientRepository>();
         builder.Services.AddTransient<IPatientBusiness, PatientBusiness>();
 
+        builder.Services.AddTransient<IAppointmentRepository, AppointmentRepository>();
+        builder.Services.AddTransient<IAppointmentBusiness, AppointmentBusiness>();
+
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(120);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
 
 
         var app = builder.Build();
@@ -47,7 +55,10 @@ internal class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
+        app.UseSession();
+
         app.UseRouting();
+
 
         app.UseAuthorization();
 

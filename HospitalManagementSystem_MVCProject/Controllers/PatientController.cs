@@ -35,6 +35,11 @@ namespace HospitalManagementSystem_MVCProject.Controllers
         public IActionResult GetAllPatients()
         {
             var patients = patientBusiness.GetAllPatients().ToList();
+            foreach(Patient patient in patients)
+            {
+                int PatientId = patient.PatientId;
+                HttpContext.Session.SetInt32("PatientId", PatientId);
+            }
             return View(patients);
         }
 
@@ -99,12 +104,19 @@ namespace HospitalManagementSystem_MVCProject.Controllers
         [HttpPost]
         public IActionResult PatientLogin(LoginModel loginModel)
         {
-            if (loginModel == null || loginModel.UserId == 0 || loginModel.UserName == null)
-                return NotFound("Please provide all credentials");
+            if (loginModel.UserId == 0 || loginModel.UserName == null)
+                return BadRequest("Please provide all credentials");
             Patient patient = patientBusiness.PatientLogin(loginModel);
-            if (patient == null) return NotFound("Invalid credentials");
-            return RedirectToAction("GetPatientById", new { patientId = patient.PatientId });
-        } 
+            if (patient != null)
+            {
+                HttpContext.Session.SetInt32("PatientId", patient.PatientId);
+                return RedirectToAction("GetPatientById", new { patientId = patient.PatientId });
+            }
+            else return NotFound("Invalid credentials");
+        }
+
+        
+
 
     }
 }

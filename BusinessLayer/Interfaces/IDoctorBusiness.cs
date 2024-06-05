@@ -15,5 +15,6 @@ namespace BusinessLayer.Interfaces
         Doctor GetDoctorById(int doctorID);
         bool UpadateDoctor(Doctor doctor);
         bool DeleteDoctor(int doctorID);
+        Doctor DoctorLogin(LoginModel loginModel);
     }
 }

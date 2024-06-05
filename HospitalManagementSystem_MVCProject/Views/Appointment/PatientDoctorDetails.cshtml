@@ -1,22 +1,25 @@
-﻿@model IEnumerable<CommonLayer.Models.Doctor>
+﻿@model IEnumerable<CommonLayer.Models.AppointmentPatientModel>
 
 @{
-    ViewData["Title"] = "GetAllDoctors";
+    ViewData["Title"] = "PatientDoctorDetails";
 }
 
-<h1>GetAllDoctors</h1>
+<h1>PatientDoctorDetails</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-bordered">
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DoctorId)
+                @Html.DisplayNameFor(model => model.AppointmentId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
@@ -34,25 +37,16 @@
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Qualification)
+                @Html.DisplayNameFor(model => model.PatientImage)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Specialization)
+                @Html.DisplayNameFor(model => model.DoctorId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Experience)
+                @Html.DisplayNameFor(model => model.DoctorName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DoctorImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsTrash)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
             </th>
             <th></th>
         </tr>
@@ -61,10 +55,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DoctorId)
+                @Html.DisplayFor(modelItem => item.AppointmentId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FullName)
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
@@ -73,8 +70,7 @@
                 @Html.DisplayFor(modelItem => item.Contact)
             </td>
             <td>
-                @* @Html.DisplayFor(modelItem => item.DOB) *@
-                @item.DOB.ToString("d")
+                @Html.DisplayFor(modelItem => item.DOB)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Age)
@@ -83,25 +79,16 @@
                 @Html.DisplayFor(modelItem => item.Gender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Qualification)
+                @Html.DisplayFor(modelItem => item.PatientImage)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Specialization)
+                @Html.DisplayFor(modelItem => item.DoctorId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Experience)
+                @Html.DisplayFor(modelItem => item.DoctorName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DoctorImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsTrash)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

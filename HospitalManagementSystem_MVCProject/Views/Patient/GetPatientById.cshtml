@@ -4,81 +4,94 @@
     ViewData["Title"] = "GetPatientById";
 }
 
-<h1>GetPatientById</h1>
+<link rel="stylesheet" href="~/css/UserDetailsStyleSheet.css" asp-append-version="true" />
 
-<div>
-    <h4>Patient</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+<h1>Patient details</h1>
+<hr id="hr" />
+
+<div  id="pnt-div">
+    @* <h4>Patient</h4>
+    <hr /> *@
+    <dl class="row" id="container">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.PatientId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.PatientId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.FullName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.FullName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.Contact)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.Contact)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.DOB)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DOB)
+        <dd class="col-sm-10" id="pnt-data">
+            @* @Html.DisplayFor(model => model.DOB) *@
+            @Model.DOB.ToString("d")
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.Age)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.Age)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.Gender)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.Gender)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.PatientImage)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.PatientImage)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.IsTrash)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.IsTrash)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.CreatedAt)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.CreatedAt)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2" id="pnt-label">
             @Html.DisplayNameFor(model => model.UpdatedAt)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10" id="pnt-data">
             @Html.DisplayFor(model => model.UpdatedAt)
         </dd>
+
+        <div id="rdct-btns">
+            <div id="btns">  @Html.ActionLink("Update", "UpdatePatient", new { id = Model.PatientId }) </div>
+            ||
+            <a id="btns" class="btn btn-primary" asp-action="GetAllDoctors" asp-controller="Doctor">View all doctors</a>
+        </div>
+
     </dl>
+
+    
+
 </div>
 <div>
-    @Html.ActionLink("Edit", "UpdatePatient", new { patientId = Model.PatientId }) |
-    <a asp-action="GetAllPatients">Back to List</a>
+    
 </div>

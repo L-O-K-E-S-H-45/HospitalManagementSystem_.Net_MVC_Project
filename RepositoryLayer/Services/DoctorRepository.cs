@@ -124,7 +124,10 @@ namespace RepositoryLayer.Services
                             Qualification = (string)dataReader["Qualification"],
                             Specialization = (string)dataReader["Specialization"],
                             Experience = (int)dataReader["Experience"],
-                            DoctorImage = (string)dataReader["DoctorImage"]
+                            DoctorImage = (string)dataReader["DoctorImage"],
+                            IsTrash = (bool)dataReader["IsTrash"],
+                            CreatedAt = (DateTime)dataReader["CreatedAt"],
+                            UpdatedAt = (DateTime)dataReader["UpdatedAt"]
                         };
                     }
                     return doctor;
@@ -196,5 +199,37 @@ namespace RepositoryLayer.Services
             finally { sqlConnection.Close(); }
         }
 
+        public Doctor DoctorLogin(LoginModel loginModel)
+        {
+            try
+            {
+                if (sqlConnection != null)
+                {
+                    SqlCommand sqlCommand = new SqlCommand("usp_DoctorLogin", sqlConnection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@DoctorId", loginModel.UserId);
+                    sqlCommand.Parameters.AddWithValue("@FullName", loginModel.UserName);
+
+                    sqlConnection.Open();
+                    SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        Doctor doctor = new Doctor()
+                        {
+                            DoctorId = (int)dataReader["DoctorId"],
+                            FullName = (string)dataReader["FullName"]
+                        };
+                       return doctor;
+                    }
+                }
+                else throw new Exception("Sql Connection not established");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { sqlConnection.Close(); }
+            return null;
+        }
     }
 }

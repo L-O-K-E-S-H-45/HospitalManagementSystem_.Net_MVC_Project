@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.SqlConnectionObject
 {
-    public class DBContext
+    public class DBConnection
     {
         private static SqlConnection sqlConnecion;
         private readonly string sqlConnectionString;
         private readonly IConfiguration configuration;
-        public DBContext(IConfiguration configuration)
+        public DBConnection(IConfiguration configuration)
         {
             this.configuration = configuration;
             sqlConnectionString = configuration.GetConnectionString("DBConnection");

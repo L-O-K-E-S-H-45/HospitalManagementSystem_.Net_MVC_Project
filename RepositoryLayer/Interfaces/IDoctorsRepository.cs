@@ -16,5 +16,7 @@ namespace RepositoryLayer.Interfaces
         bool UpadateDoctor(Doctor doctor);
         bool DeleteDoctor(int doctorID);
 
+        Doctor DoctorLogin(LoginModel loginModel);
+
     }
 }

@@ -1,0 +1,54 @@
+﻿.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://res.cloudinary.com/dsuqerssy/image/upload/v1717174224/Doctors%20Images%20for%20MVC%20Project/images_pabpcf.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    width:100vh;
+    height:fit-content;
+    border:solid 5px purple;
+    border-radius:10px;
+}
+
+.col-md-4 {
+    width:400px;
+    /*border: solid 2px red;*/
+    padding : 20px;
+    letter-spacing : 1.5px;
+}
+
+.control-label {
+    font-size: 22px;
+    font-weight: bold;
+    color: crimson;
+}
+
+.form-control {
+    font-size: 20px;
+    font-weight:bold;
+    margin-bottom: 20px;
+    background-color: rgb(255,255,255, 0.5);
+    color: black;
+}
+
+#btn{
+    width:fit-content;
+    height:fit-content;
+    background-color:yellow;
+    color:blue;
+    font-weight:bold;
+    font-size:20px;
+    padding:10px;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+#radio-btn{
+    margin-bottom:20px;
+}
+
+
+
+
+

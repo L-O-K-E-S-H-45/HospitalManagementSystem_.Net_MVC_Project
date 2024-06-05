@@ -1,39 +1,46 @@
 ﻿@model CommonLayer.Models.LoginModel
 
 @{
-    ViewData["Title"] = "PatientLogin";
+    ViewData["Title"] = "DoctorLogin";
 }
 
 <link rel="stylesheet" href="~/css/UserLoginStyleSheet.css" asp-append-version="true" />
 
-<h1>Patient Login</h1>
+<h1>Doctor Login</h1>
 <hr id="hr" />
 @* <h4>LoginModel</h4>
 <hr /> *@
 <div class="row" id="dct-lgn-div">
     <div class="col-md-4">
-        <form asp-action="PatientLogin">
+        <form asp-action="DoctorLogin">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 @* <label asp-for="UserId" class="control-label"></label> *@
-                <input asp-for="UserId" class="form-control" placeholder="UserId" />
+                <input id="inp" asp-for="UserId" class="form-control" placeholder="UserId" />
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
+                @* <label asp-for="UserName" class="control-label"></label> *@
                 <input asp-for="UserName" placeholder="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary" id="create-btn" />
             </div>
+
+            <br/>
+
+            <h6>don't' have a account? <a id="signin-btn" href="@Url.Action("AddDoctor", "Doctor")">Register</a> </h6>
+
         </form>
     </div>
 </div>
 
 <div>
-    @* <a asp-action="GetAllPatients">Back to List</a> *@
-    <h6>don't' have a account? <a id="signin-btn" href="@Url.Action("RegisterPatient", "Patient")">Register</a> </h6>
-    @* <a id="signin-btn"  asp-action="RegisterPatient">Register</a> *@
+    @*  <a asp-action="">Back to Index</a>  *@
+
+    
+
 </div>
 

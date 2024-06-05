@@ -17,6 +17,121 @@ html {
   min-height: 100%;
 }
 
+/*-----------------------------*/
+
+#center-body {
+    width: 100vh;
+    margin-left: 50px;
+}
+
 body {
   margin-bottom: 60px;
+  background-color : aliceblue;
 }
+
+#al-titl {
+    color: darkmagenta;
+}
+
+/*.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcyan;
+    border: solid 5px black;
+    padding: 20px 0px;
+}*/
+
+
+
+.form-control{
+    font-size:18px;
+    font-weight:600;
+}
+
+#radio-btn{
+    border:solid 0.5px gray;
+    background-color:white;
+    width:200px;
+    font-size:20px;
+    padding-left:10px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+#create-btn {
+    width: 130px;
+    height: 40px;
+    font-size:21px;
+    font-weight:700;
+    text-align:center;
+    letter-spacing:1px;
+}
+
+#signin-btn{
+    font-size:20px;
+    font-weight:800;
+    text-decoration-color:red;
+}
+
+#rd-btns {
+    font-size:17px;
+}
+
+.table{
+    background-color:bisque;
+    width:100%;
+    /*border-block-style:dashed;*/
+    border-block-color:green;
+    border-block-width:5px;
+    border:solid;
+    table-layout:bordered;
+}
+
+thead {
+    font-size: 19px;
+    font-weight: bolder;
+    color: crimson;
+    background-color: gold;
+}
+
+tbody{
+    font-size:16px;
+    font-weight:600;
+}
+
+#dob {
+    width: 100px;
+}
+
+#crtd-at{
+    width:120px;
+}
+
+td {
+    font-size: 18px;
+}
+
+#cnrn-abt {
+    width: 300px;
+}
+
+#option-btns {
+    color: red;
+    font-size: 19px;
+    letter-spacing: 0.8px;
+    padding-right: 20px;
+}
+
+#hr {
+    border:dotted 2px ;  
+    width:1750px;
+}
+
+
+
+
+
+
+
+

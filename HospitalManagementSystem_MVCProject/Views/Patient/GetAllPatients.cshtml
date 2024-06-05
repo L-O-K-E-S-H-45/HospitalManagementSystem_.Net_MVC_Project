@@ -4,15 +4,17 @@
     ViewData["Title"] = "GetAllPatients";
 }
 
-<h1>GetAllPatients</h1>
+<h1 id="al-titl">Patients Profiles</h1>
+
+<hr id="hr" />
 
 <p>
     @* <a asp-action="Create">Create New</a> *@
 
-    @Html.ActionLink("Create", "RegisterPatient", new { /* id=item.PrimaryKey */ })
+    @* @Html.ActionLink("Create", "RegisterPatient", new { /* id=item.PrimaryKey */ }) *@
 
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -28,7 +30,9 @@
                 @Html.DisplayNameFor(model => model.Contact)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DOB)
+                <div id="dob">
+                    @Html.DisplayNameFor(model => model.DOB)
+                </div>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Age)
@@ -43,7 +47,9 @@
                 @Html.DisplayNameFor(model => model.IsTrash)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
+                <div id="crtd-at">
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </div>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdatedAt)
@@ -89,9 +95,12 @@
                 @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "UpdatePatient", new {  id=item.PatientId }) |
-                    @Html.ActionLink("Details", "GetPatientById", new { patientId = item.PatientId }) |
-                    @Html.ActionLink("Delete", "DeletePatient", new {  patientId=item.PatientId })
+                <div id="option-btns" >
+                        @Html.ActionLink("Edit", "UpdatePatient", new { id = item.PatientId }) <br/>
+                        @Html.ActionLink("Details", "GetPatientById", new { patientId = item.PatientId }) <br />
+                        @Html.ActionLink("Delete", "DeletePatient", new { patientId = item.PatientId })
+                </div>
+                    
             </td>
         </tr>
 }

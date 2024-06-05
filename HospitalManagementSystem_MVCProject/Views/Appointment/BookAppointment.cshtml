@@ -1,0 +1,61 @@
+﻿@model CommonLayer.Models.AppointmentModel
+@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "BookAppointment";
+}
+
+<h1>BookAppointment</h1>
+
+<h4>AppointmentModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BookAppointment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+                <label asp-for="AppointmentId" class="control-label"></label>
+                <input asp-for="AppointmentId" class="form-control" />
+                <span asp-validation-for="AppointmentId" class="text-danger"></span>    
+            </div> *@
+            <div class="form-group">
+                <label asp-for="PatientId" class="control-label"></label>
+                <input asp-for="PatientId" class="form-control" value=@Context.Session.GetInt32("PatientId") readonly />
+                <span asp-validation-for="PatientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoctorId" class="control-label"></label>
+                <input asp-for="DoctorId" class="form-control" value=@Context.Session.GetInt32("DoctorId") readonly />
+                <span asp-validation-for="DoctorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConcernAbout" class="control-label"></label>
+                <input asp-for="ConcernAbout" class="form-control" />
+                <span asp-validation-for="ConcernAbout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppointmentDate" class="control-label"></label>
+                <input asp-for="AppointmentDate" class="form-control" type="date" />
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" type="time" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+           @*  <div class="form-group">
+                <label asp-for="EndTime" class="control-label"></label>
+                <input asp-for="EndTime" class="form-control" type="time" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetAllAppointments">Back to List</a>
+</div>
+

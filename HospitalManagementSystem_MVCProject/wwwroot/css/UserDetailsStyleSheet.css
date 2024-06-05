@@ -1,0 +1,89 @@
+﻿
+/* Style for User details by id  */
+
+#dts-title{
+}
+
+body {
+    background-color: lemonchiffon;
+}
+
+#user-dtls {
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vh;
+    height: fit-content;
+    border: solid 5px crimson;
+    font-size: 20px;
+    padding: 20px 0px;
+    border-radius: 10px;
+    font-weight:bold;
+}
+
+#container {
+    width: 100%;
+    margin-left: 100px;
+    margin-right: 200px;
+    /*border: solid 5px red;*/
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+#dct-label {
+    color: black;
+}
+
+#dct-data {
+    color: darkblue;
+    /*margin-left:1px;*/
+}
+
+#rdct-btns{
+    font-size:22px;
+    margin-top:30px;
+    display:flex;
+    gap:30px;
+    color:brown;
+}
+
+#btns{
+    border: solid 2px green;
+    width:fit-content;
+    height: 45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:aqua;
+    border-radius:10px;
+    background-color:hotpink;
+    padding:10px;
+}
+
+
+/*  patient style  */
+
+#pnt-div {
+    background-image: url("https://res.cloudinary.com/dsuqerssy/image/upload/c_thumb,w_200,g_face/v1717174108/Doctors%20Images%20for%20MVC%20Project/images_xbuplt.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vh;
+    height: fit-content;
+    border: solid 5px crimson;
+    font-size: 20px;
+    padding: 20px 0px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#pnt-label{
+    color:white;
+}
+
+#pnt-data{
+    color:yellow;
+}
+
+

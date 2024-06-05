@@ -6,7 +6,11 @@
     <title>@ViewData["Title"] - HospitalManagementSystem_MVCProject</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/NavbarStyleSheet.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HospitalManagementSystem_MVCProject.styles.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/NavbarStyleSheet.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
@@ -25,15 +29,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a id="login-link" class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="DoctorLogin">Doctor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="login-link" class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="PatientLogin">Patient</a>
+                        </li>
+
                     </ul>
+
                 </div>
+
             </div>
         </nav>
     </header>
-    <div class="container">
+    @* <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+    </div> *@
+     <div id="center-body">
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">
